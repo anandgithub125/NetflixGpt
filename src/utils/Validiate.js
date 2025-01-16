@@ -1,8 +1,8 @@
 export const checkValidation = (email, password, name, isSignUp) => {
-  console.log("Email:", email);
-  console.log("Password:", password);
-  console.log("Name:", name);
-  console.log("Is SignUp Mode:", isSignUp);
+  // console.log("Email:", email);
+  // console.log("Password:", password);
+  // console.log("Name:", name);
+  // console.log("Is SignUp Mode:", isSignUp);
 
   const isEmailValid = /^([A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,})$/.test(email);
   const isPasswordValid = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(password);

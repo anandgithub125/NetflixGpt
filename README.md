@@ -5,3 +5,10 @@
 -Routing
 -Login Form
 -Sign Form
+-Integrated firebase for hosting and auth
+-Added Router
+-Create SignUP user account
+-Implement SignIn user api
+-Created Redux store with userSlice
+-Implement SignOut
+-Update Profile
