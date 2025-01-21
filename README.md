@@ -12,3 +12,8 @@
 -Created Redux store with userSlice
 -Implement SignOut
 -Update Profile
+-Add hardcoded into constant file
+-Integrated TMDB API for Movies list
+-custom hooks for Movies List
+-create moviesSlice
+-Embeded youtube video

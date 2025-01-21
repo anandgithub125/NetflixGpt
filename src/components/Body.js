@@ -7,6 +7,7 @@ import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { removeUser } from "../utils/userSlice";
+import { photoAvtar } from "../utils/constent";
 
 
 const Body = () => {
@@ -21,17 +22,7 @@ const Body = () => {
       element: <Browse />,
     },
   ]);
-  useEffect(()=>{
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const {uid, email, displayName, photoURL} = user;
-        dispatch(addUser({uid:uid, email:email, displayName: displayName, photoURL:photoURL}))
-       
-      } else {
-        dispatch(removeUser())
-      }
-    });
-  }, [])
+  
   return (
     <div>
       <RouterProvider router={appRouter} />

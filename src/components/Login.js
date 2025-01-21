@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
-import { checkValidation } from "../utils/Validiate";
+import { checkValidation } from "../utils/validiate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from '../utils/firebase'
-import { useNavigate } from "react-router-dom";
 import { addUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
+import { photoAvtar, backgroundImg } from "../utils/constent";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -13,7 +13,6 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
-  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   // console.log(checkValidation);
@@ -35,23 +34,18 @@ const Login = () => {
         // Signed up 
         const user = userCredential.user;
         updateProfile(user, {
-          displayName: nameValue, photoURL: "https://media.licdn.com/dms/image/v2/C5603AQEWE1p69BMSyw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1652553526822?e=1742428800&v=beta&t=z0La7MpH8YV7upXxCI46ccnxFlD7Zqu-bdkwDtoyD9M"
+          displayName: nameValue, photoURL: photoAvtar
 
         }).then(() => {
           const {uid, email, displayName, photoURL} = auth.currentUser;
-                  dispatch(addUser({uid:uid, email:email, displayName: displayName, photoURL:photoURL}))
+                  dispatch(addUser({uid:uid, email:email, displayName: displayName, photoURL:photoAvtar}))
                   console.log(photoURL)
-          navigate("/browser")
         }).catch((error) => {
          
           setErr(error.message)
         });
         console.log("userSignUp",user)
         console.log(passwordValue)
-        navigate("/browser")
-       
-
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -66,8 +60,6 @@ const Login = () => {
         const user = userCredential.user;
         console.log("userSignUp", user)
         console.log(passwordValue)
-        navigate("/browser")
-
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -84,8 +76,7 @@ const Login = () => {
       <Header />
       <div className="position: absolute">
         <img
-          src="
-https://assets.nflxext.com/ffe/siteui/vlv3/4690cab8-243a-4552-baef-1fb415632f74/web/IN-en-20241118-TRIFECTA-perspective_0b813abc-8365-4a43-a9d8-14c06e84c9f3_medium.jpg"
+          src={backgroundImg}
           alt="backgroundImage"
         />
       </div>
